@@ -25,8 +25,8 @@ Draw.loadPlugin(function(ui) {
                     "ellipse;whiteSpace=wrap;html=1;aspect=fixed;shadow=0;glass=0;comic=0;labelBackgroundColor=none;strokeColor=#82b366;strokeWidth=2;fillColor=#d5e8d4;fontFamily=Helvetica;fontSize=14;fontColor=#000000;align=center;verticalAlign=middle;spacing=0;");
         
           newElement.vertex=!0;
-			newElement.insertVertex(parent, null, '1', pos.x, pos.y, 15, 15, null);
-          theGraph.setSelectionCell(theGraph.addCell(newElement));
+          /*newElement.insertVertex(parent, null, '1', pos.x, pos.y, 15, 15, null);*/
+          theGraph.setSelectionCell(theGraph.addCell(newElement))
 			
 
 				
