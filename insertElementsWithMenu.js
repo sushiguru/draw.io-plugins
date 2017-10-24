@@ -13,7 +13,6 @@ Draw.loadPlugin(function(ui) {
     */
     
     // Adds resources for actions
-    mxResources.parse('myInsertText=Insert text element');
     mxResources.parse('myInsertEllipse=Insert ellipse');
     
     // Adds action : myInsertEllipse
@@ -22,34 +21,23 @@ Draw.loadPlugin(function(ui) {
         if(theGraph.isEnabled() && !theGraph.isCellLocked(theGraph.getDefaultParent())){
           var pos=theGraph.getInsertPoint();
           var newElement=new mxCell("",
-                    new mxGeometry(pos.x, pos.y, 80, 80),
-                    "ellipse;whiteSpace=wrap;html=1;");
+                    new mxGeometry(pos.x, pos.y, 15, 15),
+                    "ellipse;whiteSpace=wrap;html=1;aspect=fixed;shadow=0;glass=0;comic=0;labelBackgroundColor=none;strokeColor=#82b366;strokeWidth=2;fillColor=#d5e8d4;fontFamily=Helvetica;fontSize=14;fontColor=#000000;align=center;verticalAlign=middle;spacing=0;");
         
           newElement.vertex=!0;
-          theGraph.setSelectionCell(theGraph.addCell(newElement))
+			newElement.insertVertex(parent, null, '1', pos.x, pos.y, 15, 15, null);
+          theGraph.setSelectionCell(theGraph.addCell(newElement));
+			
+
+				
         }
     }, null, null, "Ctrl+Shift+Q");
     
     ui.keyHandler.bindAction(81, !0, "myInsertEllipse", !0);
-    
-    ui.actions.addAction('myInsertText', function() {
-        var theGraph = ui.editor.graph;
-        if(theGraph.isEnabled() && !theGraph.isCellLocked(theGraph.getDefaultParent())){
-          var pos=theGraph.getInsertPoint();
-          var newElement=new mxCell("",
-                    new mxGeometry(pos.x, pos.y, 80, 80),
-                    "text;html=1;strokeColor=none;fillColor=none;align=left;verticalAlign=top;whiteSpace=wrap;overflow=auto");
-        
-          newElement.vertex=!0;
-          theGraph.setSelectionCell(theGraph.addCell(newElement))
-        }
-    }, null, null, "Ctrl+Shift+T");
-    
-    ui.keyHandler.bindAction(84, !0, "myInsertText", !0);
+  
     
     // Adds menu
-    ui.menubar.addMenu('My Menu', function(menu, parent) {
-        ui.menus.addMenuItem(menu, 'myInsertText');
+    ui.menubar.addMenu('Add Relationships', function(menu, parent) {
         ui.menus.addMenuItem(menu, 'myInsertEllipse');
     });
 
